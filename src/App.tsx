@@ -11,7 +11,7 @@ function App() {
      </button>
      
      </Card>
-     {/* <UserList users={users}/> */}
+     <UserList users={users}/>
     </>
   )
 }
