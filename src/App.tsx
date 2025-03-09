@@ -2,6 +2,8 @@ import { useState } from "react"
 import Card from "./components/Card"
 import UserList from "./components/UserList"
 import {users} from './users'
+import ProductsList from "./components/ProductsList"
+import { products } from "./products"
 
 function App() {
   const [click,setClick] = useState(false)
@@ -12,9 +14,11 @@ function App() {
        click
      </button>
      </Card>
-     
+
+
      {click && <div><UserList users={users}/></div>}
-     
+     {click && <div><ProductsList width={600} height={500} products={products}/></div>}
+    
      
      
     </>
