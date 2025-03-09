@@ -1,12 +1,31 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Card from "./components/Card"
 import UserList from "./components/UserList"
-import {users} from './users'
+
 import ProductsList from "./components/ProductsList"
 import { products } from "./products"
+import { IUser } from "./types"
+import axios from "axios"
 
 function App() {
   const [click,setClick] = useState(false)
+  const [users,setUsers] = useState<IUser[]>([])
+
+useEffect(()=>{
+  fetchUsers
+},[])
+
+
+async function fetchUsers(){
+  try{
+    const response = await axios.get<IUser[]>('https://fakestoreapi.in/api/users')
+    setUsers(response.data)
+  } catch(e){
+     alert(e)
+  }
+}
+
+
   return (
     <>
      <Card fontSize={30} width={100} height={100}><p style={{margin:'0 20px'}}>click</p>
