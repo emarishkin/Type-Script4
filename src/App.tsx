@@ -1,29 +1,30 @@
-import { useEffect, useState } from "react"
+import {useState } from "react"
 import Card from "./components/Card"
 import UserList from "./components/UserList"
-
+import { users } from "./users"
 import ProductsList from "./components/ProductsList"
 import { products } from "./products"
-import { IUser } from "./types"
-import axios from "axios"
+import TodoList from "./components/TodoList"
+import { todos } from "./todosM"
+
 
 function App() {
   const [click,setClick] = useState(false)
-  const [users,setUsers] = useState<IUser[]>([])
+  // const [users,setUsers] = useState<IUser[]>([])
 
-useEffect(()=>{
-  fetchUsers
-},[])
+// useEffect(()=>{
+//   fetchUsers()
+// },[])
 
 
-async function fetchUsers(){
-  try{
-    const response = await axios.get<IUser[]>('https://fakestoreapi.in/api/users')
-    setUsers(response.data)
-  } catch(e){
-     alert(e)
-  }
-}
+// async function fetchUsers(){
+//   try{
+//     const response = await axios.get<IUser[]>('https://jsonplaceholder.typicode.com/users')
+//     setUsers(response.data)
+//   } catch(e){
+//      alert(e)
+//   }
+// }
 
 
   return (
@@ -37,6 +38,10 @@ async function fetchUsers(){
 
      {click && <div><UserList users={users}/></div>}
      {click && <div><ProductsList width={600} height={500} products={products}/></div>}
+
+     <div>
+      <TodoList todos={todos} />
+     </div>
     
      
      
